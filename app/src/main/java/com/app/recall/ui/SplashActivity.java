@@ -44,7 +44,7 @@ public class SplashActivity extends BaseActivity<SplashPresenterImpl> {
     protected void initViews() {
         Intent intent = new Intent();
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent.setClass(this, BindPlatformActivity.class));
+        startActivity(intent.setClass(this, LoginActivity.class));
         //        Log.i(TAG, "initViews: " + presenter.checkState());
         //        if (presenter.checkState()) {
         //            presenter.login();

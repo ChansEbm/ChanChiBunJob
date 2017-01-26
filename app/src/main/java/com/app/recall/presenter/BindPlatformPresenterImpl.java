@@ -1,6 +1,5 @@
 package com.app.recall.presenter;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -10,21 +9,12 @@ import com.app.recall.contract.BindPlatformContract;
 import com.app.recall.entity.retrofit.BaseEntity;
 import com.app.recall.entity.retrofit.PlatformsEntity;
 import com.app.recall.entity.retrofit.params.Platforms;
-import com.facebook.AccessToken;
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
-import com.facebook.Profile;
-import com.facebook.internal.CallbackManagerImpl;
-import com.facebook.login.LoginManager;
-import com.facebook.login.LoginResult;
 import com.github.pwittchen.prefser.library.Prefser;
 import com.google.gson.Gson;
 import com.orhanobut.logger.Logger;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 import okhttp3.RequestBody;
@@ -37,7 +27,9 @@ public class BindPlatformPresenterImpl extends BasePresenter<BindPlatformContrac
         implements BindPlatformContract.Presenter {
 
     private Prefser prefser;
-    private int what = -1;
+    private String userName;
+    private String name;
+    private String token;
 
     @Override
     public void onAttach(AppCompatActivity appCompatActivity) {
@@ -75,17 +67,14 @@ public class BindPlatformPresenterImpl extends BasePresenter<BindPlatformContrac
         }
     }
 
-    @Override
-    public void setupPlatform(int what) {
-        this.what = what;
-        switch (what) {
-            case APP.FACEBOOK_WHAT:
-                new FacebookPlatform().facebookAuth();
-                break;
-            case APP.GOOGLE_WHAT:
+    public void savePlatformField(String name, String userName, String token) {
+        this.name = name;
+        this.userName = userName;
+        this.token = token;
+    }
 
-                break;
-        }
+    public void uploadPlatform() {
+        uploadPlatform(this.name, this.userName, this.token);
     }
 
     public void uploadPlatform(String name, String username, String token) {
@@ -107,7 +96,8 @@ public class BindPlatformPresenterImpl extends BasePresenter<BindPlatformContrac
             platforms.addAll((Collection<? extends PlatformsEntity>) entities);
             prefser.put(APP.PLATFORMS, platforms);
             Log.i(TAG, "onSuccessResponse: " + entities.size());
-            if (iView != null) iView.uploadPlatformSuccess(this.what);
+            int what1 = -1;
+            if (iView != null) iView.uploadPlatformSuccess(what1);
         }
     }
 
@@ -116,56 +106,49 @@ public class BindPlatformPresenterImpl extends BasePresenter<BindPlatformContrac
 
     }
 
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == CallbackManagerImpl.RequestCodeOffset.Login.toRequestCode()) {
-            new FacebookPlatform().onActivityResult(requestCode, resultCode, data);
-        }
-    }
 
-    private class FacebookPlatform implements FacebookCallback<LoginResult> {
-        CallbackManager callbackManager = CallbackManager.Factory.create();
-
-        FacebookPlatform() {
-            LoginManager.getInstance().registerCallback(callbackManager, this);
-        }
-
-        void facebookAuth() {
-            AccessToken currentAccessToken = AccessToken.getCurrentAccessToken();
-            if (currentAccessToken != null && !currentAccessToken.isExpired()) {
-
-            } else
-                LoginManager.getInstance().logInWithReadPermissions(activity, Collections
-                        .singletonList("public_profile"));
-        }
-
-        void onActivityResult(int requestCode, int resultCode, Intent data) {
-            callbackManager.onActivityResult(requestCode, resultCode, data);
-        }
-
-        @Override
-        public void onSuccess(LoginResult loginResult) {
-            AccessToken accessToken = loginResult.getAccessToken();
-            AccessToken.setCurrentAccessToken(accessToken);
-
-            Profile currentProfile = Profile.getCurrentProfile();
-            Profile.setCurrentProfile(currentProfile);
-
-            String name = currentProfile.getName();
-            uploadPlatform("facebook", name, accessToken.getToken());
-        }
-
-        @Override
-        public void onCancel() {
-
-        }
-
-        @Override
-        public void onError(FacebookException error) {
-
-        }
-    }
+    //    private class FacebookPlatform implements FacebookCallback<LoginResult> {
+    //        CallbackManager callbackManager = CallbackManager.Factory.create();
+    //
+    //        FacebookPlatform() {
+    //            LoginManager.getInstance().registerCallback(callbackManager, this);
+    //        }
+    //
+    //        void facebookAuth() {
+    //            AccessToken currentAccessToken = AccessToken.getCurrentAccessToken();
+    //            if (currentAccessToken != null && !currentAccessToken.isExpired()) {
+    //
+    //            } else
+    //                LoginManager.getInstance().logInWithReadPermissions(activity, Collections
+    //                        .singletonList("public_profile"));
+    //        }
+    //
+    //        void onActivityResult(int requestCode, int resultCode, Intent data) {
+    //            callbackManager.onActivityResult(requestCode, resultCode, data);
+    //        }
+    //
+    //        @Override
+    //        public void onSuccess(LoginResult loginResult) {
+    //            AccessToken accessToken = loginResult.getAccessToken();
+    //            AccessToken.setCurrentAccessToken(accessToken);
+    //
+    //            Profile currentProfile = Profile.getCurrentProfile();
+    //            Profile.setCurrentProfile(currentProfile);
+    //
+    //            String name = currentProfile.getName();
+    //            uploadPlatform("facebook", name, accessToken.getToken());
+    //        }
+    //
+    //        @Override
+    //        public void onCancel() {
+    //
+    //        }
+    //
+    //        @Override
+    //        public void onError(FacebookException error) {
+    //
+    //        }
+    //    }
 
 
 }

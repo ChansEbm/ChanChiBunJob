@@ -39,7 +39,12 @@ public class LoginActivity extends BasePlatformActivity<LoginPresenterImpl> impl
     }
 
     @Override
-    protected void onPlatform(String userName, String token) {
+    protected void onPlatformSuccess(String name, String userName, String token) {
+
+    }
+
+    @Override
+    protected void onPlatformFailed(String name) {
 
     }
 

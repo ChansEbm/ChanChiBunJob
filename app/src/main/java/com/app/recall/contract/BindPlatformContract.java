@@ -17,7 +17,6 @@ public class BindPlatformContract {
     public interface Presenter extends IPresenter {
         void titleWhat(int what, Toolbar toolbar);
 
-        void setupPlatform(int what);
     }
 
     public interface Model {}

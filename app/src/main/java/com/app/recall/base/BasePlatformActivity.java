@@ -83,23 +83,27 @@ public abstract class BasePlatformActivity<IP extends IPresenter> extends BaseAc
     @Override
     public void onComplete(Platform platform, int i, HashMap<String, Object> hashMap) {
         String exportData = platform.getDb().exportData();
+        String userName = platform.getDb().getUserName();
+        String token = platform.getDb().getToken();
+        String name = platform.getName();
         Prefser prefser = new Prefser(this);
-        if (TextUtils.equals(Twitter.NAME, platform.getName())) {
+        if (TextUtils.equals(Twitter.NAME, name)) {
             TwitterProfilePlatformEntity twitterProfilePlatform = new Gson().fromJson(exportData,
                     TwitterProfilePlatformEntity.class);
             twitterProfilePlatform.setAuth(platform.isAuthValid());
             prefser.put(APP.TWITTER, twitterProfilePlatform);
-        } else if (TextUtils.equals(Wechat.NAME, platform.getName())) {
+        } else if (TextUtils.equals(Wechat.NAME, name)) {
             WXProfilePlatformEntity wxProfilePlatformEntity = new Gson().fromJson(exportData,
                     WXProfilePlatformEntity.class);
             wxProfilePlatformEntity.setAuth(platform.isAuthValid());
             prefser.put(APP.WECHAT, wxProfilePlatformEntity);
-        } else if (TextUtils.equals(QQ.NAME, platform.getName())) {
+        } else if (TextUtils.equals(QQ.NAME, name)) {
             QQProfilePlatformEntity qqProfilePlatformEntity = new Gson().fromJson(exportData,
                     QQProfilePlatformEntity.class);
             qqProfilePlatformEntity.setAuth(platform.isAuthValid());
             prefser.put(APP.TENCENT, qqProfilePlatformEntity);
         }
+        onPlatformSuccess(name, userName, token);
     }
 
     @Override
@@ -121,7 +125,9 @@ public abstract class BasePlatformActivity<IP extends IPresenter> extends BaseAc
         }
     }
 
-    protected abstract void onPlatform(String userName, String token);
+    protected abstract void onPlatformSuccess(String name, String userName, String token);
+
+    protected abstract void onPlatformFailed(String name);
 
     class GoogleClientLog implements GoogleApiClient.OnConnectionFailedListener {
         private GoogleSignInOptions options;
@@ -167,11 +173,12 @@ public abstract class BasePlatformActivity<IP extends IPresenter> extends BaseAc
                 String id = signInAccount.getId();
                 GooglePlatformEntity entity = new GooglePlatformEntity(email, id);
                 new Prefser(BasePlatformActivity.this).put(APP.GOOGLEPLUS, entity);
-                BasePlatformActivity.this.onPlatform(signInAccount.getEmail(), signInAccount
-                        .getIdToken());
+                BasePlatformActivity.this.onPlatformSuccess(APP.GOOGLEPLUS, signInAccount
+                        .getEmail(), signInAccount.getIdToken());
             } else {
                 Toast.makeText(BasePlatformActivity.this, "Get your google profile failed", Toast
                         .LENGTH_SHORT).show();
+                BasePlatformActivity.this.onPlatformFailed(APP.GOOGLEPLUS);
             }
         }
 
@@ -205,8 +212,8 @@ public abstract class BasePlatformActivity<IP extends IPresenter> extends BaseAc
                 PlatformEntity entity = new PlatformEntity();
                 entity.setName(currentProfile.getName());
                 new Prefser(BasePlatformActivity.this).put(APP.FACEBOOK, entity);
-                BasePlatformActivity.this.onPlatform(currentProfile.getName(), currentAccessToken
-                        .getToken());
+                BasePlatformActivity.this.onPlatformSuccess(APP.FACEBOOK, currentProfile.getName
+                        (), currentAccessToken.getToken());
             } else {
                 LoginManager.getInstance().logInWithReadPermissions(BasePlatformActivity.this,
                         Collections.singletonList("public_profile"));
@@ -222,20 +229,22 @@ public abstract class BasePlatformActivity<IP extends IPresenter> extends BaseAc
         public void onSuccess(LoginResult loginResult) {
             AccessToken.setCurrentAccessToken(AccessToken.getCurrentAccessToken());
             Profile.setCurrentProfile(Profile.getCurrentProfile());
-            BasePlatformActivity.this.onPlatform(Profile.getCurrentProfile().getName(),
-                    AccessToken.getCurrentAccessToken().getToken());
+            BasePlatformActivity.this.onPlatformSuccess("", Profile.getCurrentProfile().getName()
+                    , AccessToken.getCurrentAccessToken().getToken());
         }
 
         @Override
         public void onCancel() {
             Toast.makeText(BasePlatformActivity.this, "Facebook auth cancel", Toast.LENGTH_SHORT)
                     .show();
+            onPlatformFailed(APP.FACEBOOK);
         }
 
         @Override
         public void onError(FacebookException error) {
             Toast.makeText(BasePlatformActivity.this, "Facebook auth error", Toast.LENGTH_SHORT)
                     .show();
+            onPlatformFailed(APP.FACEBOOK);
         }
     }
 }

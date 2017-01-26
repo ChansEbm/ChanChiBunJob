@@ -1,0 +1,31 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                 xmlns:tools="http://schemas.android.com/tools"
+                                                 android:layout_width="match_parent"
+                                                 android:layout_height="match_parent"
+                                                 android:background="@color/colorPrimaryDark"
+                                                 tools:context="com.app.recall.ui.login.LoginActivity">
+
+
+    <include
+        layout="@layout/layout_title"/>
+
+    <include
+        layout="@layout/content_login"/>
+
+    <TextView
+        android:id="@+id/user_agreement_text"
+        style="?android:attr/textAppearanceSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="@dimen/fab_margin"
+        android:text="@string/action_user_agreement"
+        android:textColor="#c5c5c5"
+        android:textStyle="bold"/>
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/sign_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|bottom"/>
+</android.support.design.widget.CoordinatorLayout>

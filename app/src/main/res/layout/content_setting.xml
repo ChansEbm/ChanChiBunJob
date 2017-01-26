@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.percent.PercentRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                               xmlns:app="http://schemas.android.com/apk/res-auto"
+                                               xmlns:tools="http://schemas.android.com/tools"
+                                               android:layout_width="match_parent"
+                                               android:layout_height="match_parent"
+                                               android:orientation="vertical"
+                                               app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                                               tools:showIn="@layout/activity_setting">
+
+    <TextView
+        android:id="@+id/account_info"
+        style="@style/settingText"
+        android:layout_width="match_parent"
+        android:clickable="true"
+        android:onClick="onClick"
+        android:text="Account Info"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="2%"/>
+
+    <TextView
+        android:id="@+id/user_info"
+        style="@style/settingText"
+        android:layout_width="match_parent"
+        android:layout_below="@id/account_info"
+        android:layout_marginTop="1dp"
+        android:clickable="true"
+        android:onClick="onClick"
+        android:text="User Info"
+        app:layout_heightPercent="10%"/>
+
+    <TextView
+        android:id="@+id/notification"
+        style="@style/settingText"
+        android:layout_width="match_parent"
+        android:layout_below="@id/user_info"
+        android:clickable="true"
+        android:onClick="onClick"
+
+        android:text="Notification"
+        app:layout_heightPercent="10%"
+        app:layout_marginTopPercent="2%"/>
+
+    <TextView
+        android:id="@+id/help"
+        style="@style/settingText"
+        android:layout_width="match_parent"
+        android:layout_below="@id/notification"
+        android:layout_marginTop="1dp"
+        android:clickable="true"
+        android:onClick="onClick"
+        android:text="Help"
+        app:layout_heightPercent="10%"/>
+
+    <TextView
+        android:id="@+id/about"
+        style="@style/settingText"
+        android:layout_width="match_parent"
+        android:layout_below="@id/help"
+        android:layout_marginTop="1dp"
+        android:clickable="true"
+        android:onClick="onClick"
+        android:text="About"
+        app:layout_heightPercent="10%"/>
+
+
+</android.support.percent.PercentRelativeLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_sign_up"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.app.recall.ui.login.EmailSignUpActivity">
+
+    <include layout="@layout/layout_title"/>
+
+    <include layout="@layout/content_email_sign_up"/>
+
+</android.support.design.widget.CoordinatorLayout>

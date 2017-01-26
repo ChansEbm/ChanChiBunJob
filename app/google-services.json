@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1063110655779",
+    "project_id": "recall-93cbe"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1063110655779:android:0735d0c1ea04f309",
+        "android_client_info": {
+          "package_name": "com.app.recall"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1063110655779-ojo3j249vok8b4faojn211l79kr8teld.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.app.recall",
+            "certificate_hash": "24E74BBEF8151BF2AEC8CC1BAF8969A7E0D7D33A"
+          }
+        },
+        {
+          "client_id": "1063110655779-f8dajh421avgjbrtnusbmodfomk4im3c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBv90IND6qnu5nQPQQmr1Sg_f95Abx-0q4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

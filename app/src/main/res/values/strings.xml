@@ -1,0 +1,53 @@
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="MissingTranslation">
+    <string name="app_name">Recall</string>
+
+    <!--Setting-->
+    <string name="dialog_disable_calendar">日历权限被禁用</string>
+    <string name="dialog_disable_camera">相机权限被禁用</string>
+    <string name="dialog_disable_contacts">联系人权限被禁用</string>
+    <string name="dialog_disable_location">地理位置权限被禁用</string>
+    <string name="dialog_disable_microphone">麦克风权限被禁用</string>
+    <string name="dialog_disable_phone">电话权限被禁用</string>
+    <string name="dialog_disable_sensors">传感器权限被禁用</string>
+    <string name="dialog_disable_sms">短信权限被禁用</string>
+    <string name="dialog_disable_storage">储存权限被禁用</string>
+    <string name="setting_calendar">请前往"设置-权限管理-日历"中打勾以允许APP读取日历权限</string>
+    <string name="setting_camera">请前往"设置-权限管理-相机"中打勾以允许APP使用相机权限</string>
+    <string name="setting_contacts">请前往"设置-权限管理-联系人"中打勾以允许APP读取联系人权限</string>
+    <string name="setting_location">请前往"设置-权限管理-位置"中打勾以允许APP读取地理位置权限</string>
+    <string name="setting_microphone">请前往"设置-权限管理-麦克风"中打勾以允许APP读取麦克风权限</string>
+    <string name="setting_phone">请前往"设置-权限管理-电话"中打勾以允许APP读取电话权限</string>
+    <string name="setting_sensors">请前往"设置-权限管理-传感器"中打勾以允许APP读取传感器权限</string>
+    <string name="setting_sms">请前往"设置-权限管理-日历"中打勾以允许APP读取短信权限</string>
+    <string name="setting_storage">请前往"设置-权限管理-储存"中打勾以允许APP读取手机储存权限</string>
+
+    <!--facebook-->
+    <string name="facebook_app_id">1849498355339564</string>
+    <!--hint-->
+    <string name="hint">提示</string>
+    <string name="positive">确定</string>
+    <string name="negative">取消</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_account">Account</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_up">Sign up</string>
+    <string name="action_forget_password">forget password?</string>
+    <string name="action_user_agreement">user agreement</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="action_go_to_confirm_your_email">Go to confirm your email</string>
+
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+
+</resources>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.app.recall">
+
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+
+    <!-- 蓝牙分享所需的权限 -->
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.READ_PROFILE"/>
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+
+    <application
+        android:name=".base.RecallApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/recall"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id"/>
+
+        <activity android:name=".ui.features.HostActivity"/>
+
+        <receiver android:name=".receiver.NetworkChangedReceiver"/>
+
+        <activity
+            android:name=".ui.login.LoginActivity"
+            android:label="@string/title_activity_login"/>
+        <activity
+            android:name=".ui.SplashActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.login.EmailSignUpActivity"/>
+        <activity android:name=".ui.login.PhoneSignUpActivity"/>
+        <activity android:name=".ui.login.CodeVerificationActivity"/>
+        <activity android:name=".ui.login.SetPasswordActivity"/>
+        <activity android:name=".ui.features.AllContactActivity"/>
+        <activity android:name=".ui.features.ContactInfoActivity">
+        </activity>
+        <activity android:name=".ui.features.SettingActivity">
+        </activity>
+        <activity android:name=".ui.features.AccountInfoActivity">
+        </activity>
+        <activity android:name=".ui.features.ChangePasswordActivity">
+        </activity>
+        <activity android:name=".ui.features.UserInfoActivity">
+        </activity>
+        <activity android:name=".ui.features.PlatformsActivity">
+        </activity>
+        <activity android:name=".ui.features.OtherPlatforms">
+        </activity>
+        <activity android:name=".ui.features.NotificationActivity">
+        </activity>
+        <activity android:name=".ui.features.IconActivity">
+        </activity>
+        <activity
+            android:name=".ui.features.SendMyNameCardActivity"
+            android:theme="@style/AppTheme.SendMyNameCard">
+        </activity>
+        <!-- for shareSDK -->
+        <activity
+            android:name="com.mob.tools.MobUIShell"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:windowSoftInputMode="stateHidden|adjustResize"/>
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:name=".ui.login.PersonalInfoActivity">
+        </activity>
+        <activity android:name=".ui.login.AllPlatformActivity">
+        </activity>
+        <activity android:name=".ui.login.BindPlatformActivity">
+        </activity>
+    </application>
+
+</manifest>

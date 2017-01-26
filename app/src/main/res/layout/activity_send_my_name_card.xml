@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.app.recall.widget.HostSwipeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.app.recall.ui.features.SendMyNameCardActivity">
+
+    <RelativeLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimaryDark">
+
+
+        <android.support.percent.PercentRelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/settingBar">
+
+            <ImageView
+                android:id="@+id/avatar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/avatar"
+                app:layout_marginTopPercent="10%"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/avatar"
+                app:layout_heightPercent="50%"
+                app:layout_marginTopPercent="3%"/>
+
+            <FrameLayout
+                android:id="@+id/button_frame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/recyclerView"
+                app:layout_marginTopPercent="2%">
+
+
+                <ImageView
+                    android:id="@+id/up"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:src="@drawable/up"
+                    />
+            </FrameLayout>
+        </android.support.percent.PercentRelativeLayout>
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/top_content"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"/>
+</com.app.recall.widget.HostSwipeLayout>

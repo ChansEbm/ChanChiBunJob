@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.app.recall.widget.PercentLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_account_info"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/darker_gray"
+    android:orientation="vertical"
+    tools:context="com.app.recall.ui.features.AccountInfoActivity">
+
+    <include
+        layout="@layout/layout_title"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:background="@android:color/white"
+        android:paddingEnd="@dimen/activity_horizontal_margin"
+        android:paddingStart="@dimen/activity_horizontal_margin"
+        app:layout_heightPercent="10%">
+
+        <TextView
+            style="?android:attr/textAppearanceMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="Account"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/account_id"
+            style="?android:attr/textAppearanceSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|end"
+            android:text="111"/>
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/password"
+        style="@style/settingText"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/selector_white_gravy"
+        android:clickable="true"
+        android:onClick="onClick"
+        android:text="Password"
+        app:layout_heightPercent="10%"/>
+
+    <TextView
+        style="@style/settingText"
+        android:id="@+id/icon"
+        android:clickable="true"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="1dp"
+        android:background="@drawable/selector_white_gravy"
+        android:onClick="onClick"
+        android:text="Icon"
+        app:layout_heightPercent="10%"/>
+
+</com.app.recall.widget.PercentLinearLayout>
